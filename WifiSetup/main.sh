@@ -97,7 +97,12 @@ iface wlan0 inet dhcp
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > sudo /etc/network/interfaces
     set_essid && set_password
     sudo touch /etc/wpa_supplicant.conf
-    sudo echo "network={
+    sudo echo "country=us
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+    scan_ssid=1
     ssid=$ESSID
     psk="\"${PASSWD}\""
 }" > sudo /etc/wpa_supplicant.conf;
