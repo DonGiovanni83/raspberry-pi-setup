@@ -8,6 +8,15 @@
 
 #!/bin/bash
 
+wget -q --tries=10 --timeout=20 --spider http://google.com
+if [[ $? -eq 0 ]]; then
+        echo "Working internet connection confirmed"
+else
+        echo "Offline"
+        exit 1
+fi
+
+
 if [ "$(ls | grep READY)" = "READY" ];
 then
     exit 1
