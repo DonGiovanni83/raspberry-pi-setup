@@ -98,6 +98,7 @@ wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > sudo /etc/network/interfaces
     ssid=$ESSID
     psk="\"${PASSWD}\""
 }" > sudo /etc/wpa_supplicant.conf;
+    prepare_interface
     sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D wext
     sudo dhclient wlan0
 }
