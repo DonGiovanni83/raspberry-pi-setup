@@ -11,7 +11,11 @@
 ESSID=""
 PASSWD=""
 
-
+#prepare interface
+function prepare_interface {
+    sudo /etc/init.d/networking restart;
+    sudo ifconfig wlan0 up
+}
 #check if necessary tools are installed else install them or abort
 function check_for_tools { 
     if ! [ -x "$(command -v wpasupplicant)" ];
@@ -31,7 +35,7 @@ function check_for_tools {
 #scan for network and choose one
 function set_essid {
     #get all network names
-    all_essids="$(iwlist wlan0 scanning | grep ESSID | grep -o '".*"')" 
+    all_essids="$(sudo wlist wlan0 scanning | grep ESSID | grep -o '".*"')" 
     echo "Select an ESSID"
 
     #Create whitespace safe array of ESSIDs
@@ -88,6 +92,7 @@ auto wlan0
 iface wlan0 inet dhcp
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > sudo /etc/network/interfaces
     set_essid && set_password
+    sudo touch /etc/wpa_supplicant.conf
     sudo echo "network={
     ssid=$ESSID
     psk="\"${PASSWD}\""
