@@ -15,6 +15,7 @@ PASSWD=""
 function prepare_interface {
     sudo /etc/init.d/networking restart;
     sudo ifconfig wlan0 up
+    sleep 5
 }
 #check if necessary tools are installed else install them or abort
 function check_for_tools { 
