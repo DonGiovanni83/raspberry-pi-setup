@@ -8,6 +8,10 @@
 
 #!/bin/bash
 
+if [ "$(ls | grep READY)" = "READY" ];
+then
+    exit 1
+fi
 
 sudo echo "LC_ALL=en_US.UTF-8" >> sudo /etc/environment
 sudo echo "en_US.UTF-8 UTF-8" >> sudo /etc/locale.gen
@@ -21,7 +25,8 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade
 sudo apt-get install vim git -y
 git clone https://github.com/DonGiovanni83/raspberry-pi-setup.git
-
+./raspberry-pi-setup/WifiSetup.main
+touch READY
 
 
 #//hackathon-setup .sh 
