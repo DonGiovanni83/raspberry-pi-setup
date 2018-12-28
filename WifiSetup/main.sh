@@ -12,9 +12,20 @@ ESSID=""
 PASSWD=""
 
 
-#install needed software
-function install_tools {
-    sudo apt-get install wpasupplicant;
+#check if necessary tools are installed else install them or abort
+function check_for_tools { 
+    if ! [ -x "$(command -v wpasupplicant)" ];
+    then
+        echo 'Error: wpasupplicant is not installed.'
+        echo "Do you want to install wpasupplicant?(y/n)"
+        read answer
+        if [ "${answer}" = "y" ];
+        then
+            sudo apt-get install wpasupplicant
+        else
+            exit 1;
+        fi 
+    fi
 }
 
 #scan for network and choose one
@@ -61,16 +72,21 @@ function set_essid {
 function set_password {
     echo "Enter the passwor for $ESSID:"
     read -s PASSWD
-    echo "$PASSWD"
 }
 
 function connect_to_wifi {
-    echo connect_to_wifi
+    set_essid && set_password
+    sudo echo "network={
+    ssid=$ESSID
+    psk="\"${PASSWD}\""
+}" > /etc/wpa_supplicant.conf;
+    sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D wext
+    sudo dhclient wlan0
 }
 
-
-#main excecution 
-set_essid && set_password
+#main execution
+check_for_tools
+connect_to_wifi
 
 #//wifi_setup .sh 
 
