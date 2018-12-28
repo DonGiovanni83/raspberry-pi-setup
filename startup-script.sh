@@ -23,7 +23,7 @@ else
     wget https://raw.githubusercontent.com/DonGiovanni83/raspberry-pi-setup/master/hackathon-setup.sh
 
     chmod +x hackathon-setup.sh
-    sudo ./hackathon-setup.sh
+    ./hackathon-setup.sh
 fi
 
 
