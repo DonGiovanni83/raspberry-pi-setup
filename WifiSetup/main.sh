@@ -75,6 +75,18 @@ function set_password {
 }
 
 function connect_to_wifi {
+    #configure wlan0 on raspberry pi
+    echo "auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+allow-hotplug wlan0
+auto wlan0
+
+
+iface wlan0 inet dhcp
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > sudo /etc/network/interfaces
     set_essid && set_password
     sudo echo "network={
     ssid=$ESSID
