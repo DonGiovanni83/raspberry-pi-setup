@@ -41,7 +41,7 @@ cd SunFounder_PiCar-S
 sudo ./install_dependencies
 sudo apt-get update
 sudo apt-get install python-smbus -y
-cd
+cd ~
 git clone --recursive https://github.com/sunfounder/SunFounder_PiCar.git
 cd SunFounder_PiCar
 python setup.py install
@@ -51,7 +51,7 @@ sudo echo "dtparam=i2c_arm=on" >> sudo /boot/config.txt
 git clone https://github.com/sunfounder/SunFounder_PiCar-V.git
 cd SunFounder_PiCar-V
 sudo ./install_dependencies
-cd
+cd  ~~
 
 ./raspberry-pi-setup/WifiSetup.main
 
