@@ -21,7 +21,7 @@ if [ -f ./hackathon-setup.sh ]; then
    exit 1
 else
     wget https://raw.githubusercontent.com/DonGiovanni83/raspberry-pi-setup/master/hackathon-setup.sh
-    chmod +x hackathon-setup.sh
+    sudo chmod +x hackathon-setup.sh
     sudo ./hackathon-setup.sh
 fi
 
