@@ -39,23 +39,17 @@ git clone https://github.com/DonGiovanni83/raspberry-pi-setup.git
 git clone --recursive https://github.com/sunfounder/SunFounder_PiCar-S.git
 cd SunFounder_PiCar-S
 sudo ./install_dependencies
-sudo apt-get update
-sudo apt-get install python-smbus -y
-cd ~
-git clone --recursive https://github.com/sunfounder/SunFounder_PiCar.git
-cd SunFounder_PiCar
-python setup.py install
-sudo echo "dtparam=i2c_arm=on" >> sudo /boot/config.txt
 
 #PiCar-V setup
 git clone https://github.com/sunfounder/SunFounder_PiCar-V.git
 cd SunFounder_PiCar-V
 sudo ./install_dependencies
-cd  ~~
 
-./raspberry-pi-setup/WifiSetup.main
+cd ~
 
-touch READY
+./raspberry-pi-setup/WifiSetup/main.sh
+
+sudo touch READY
 
 
 #//hackathon-setup .sh 
