@@ -36,7 +36,7 @@ function check_for_tools {
 #scan for network and choose one
 function set_essid {
     #get all network names
-    all_essids="$(sudo wlist wlan0 scanning | grep ESSID | grep -o '".*"')" 
+    all_essids="$(sudo iwlist wlan0 scanning | grep ESSID | grep -o '".*"')" 
     echo "Select an ESSID"
 
     #Create whitespace safe array of ESSIDs
