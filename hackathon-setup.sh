@@ -43,6 +43,8 @@ git clone --recursive https://github.com/sunfounder/SunFounder_PiCar-S.git
 cd SunFounder_PiCar-S
 sudo ./install_dependencies
 
+cd ~
+
 #PiCar-V setup
 git clone https://github.com/sunfounder/SunFounder_PiCar-V.git
 cd SunFounder_PiCar-V
