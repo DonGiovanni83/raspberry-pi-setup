@@ -38,19 +38,33 @@ git clone https://github.com/DonGiovanni83/raspberry-pi-setup.git
 sudo apt-get install python-pip -y
 pip install setuptools
 
-#PiCar-S setup
-git clone --recursive https://github.com/sunfounder/SunFounder_PiCar-S.git
-cd SunFounder_PiCar-S
-sudo ./install_dependencies
-
-cd ~
-
-#PiCar-V setup
-git clone https://github.com/sunfounder/SunFounder_PiCar-V.git
-cd SunFounder_PiCar-V
-sudo ./install_dependencies
-
-cd ~
+echo "For which robot do you want to set up your Raspberry Pi?"
+options=("PiCar-S" "PiCar-V" "Cancel")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "PiCar-S")
+            #PiCar-S setup
+            echo "Setting things up for PiCar-S...."
+            git clone --recursive https://github.com/sunfounder/SunFounder_PiCar-S.git
+            cd SunFounder_PiCar-S
+            sudo ./install_dependencies
+            cd ~
+            ;;
+        "PiCar-V")
+            #PiCar-V setup
+            echo "Setting things up for PiCar-V...."
+            git clone https://github.com/sunfounder/SunFounder_PiCar-V.git
+            cd SunFounder_PiCar-V
+            sudo ./install_dependencies
+            cd ~
+            ;;
+        "Cancel")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
 
 ./raspberry-pi-setup/WifiSetup/main.sh
 
