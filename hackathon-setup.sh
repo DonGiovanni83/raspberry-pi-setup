@@ -35,6 +35,9 @@ sudo apt-get dist-upgrade
 sudo apt-get install vim git -y
 git clone https://github.com/DonGiovanni83/raspberry-pi-setup.git
 
+sudo apt-get install python-pip -y
+pip install setuptools
+
 #PiCar-S setup
 git clone --recursive https://github.com/sunfounder/SunFounder_PiCar-S.git
 cd SunFounder_PiCar-S
